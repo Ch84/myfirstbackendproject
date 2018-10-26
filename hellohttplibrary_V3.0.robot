@@ -3,21 +3,19 @@
 Library             HttpLibrary.HTTP
 Library             String
 
-Resource            clients_operations.robot
+Resource            client_operations.robot
 
 *** Test Cases ***
 
-Test Case 1 - Request data of client with id 1
-
-    Request information of all clients and check status code
-
-
-Test Case 2 - Request data from all clients
+Test Case 1 - Generate random clients
     
-    Request information of all clients and check status code
+    Generate a random client
+    
+Test Case 2 - Get the total of all clients
+
+    Get the total of clients
     
 Test Case 3 - Create a new client
-
-    Create A New Client With A Post Request
     
-
+    Create a client
+    

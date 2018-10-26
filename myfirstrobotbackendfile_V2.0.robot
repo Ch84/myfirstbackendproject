@@ -10,8 +10,8 @@ Generate A Random Client
     ${name} =       Generate Random String        10                  [LOWER]
     ${createDate} =         Set Variable          1451602800000
     ${email} =              Catenate              SEPARATOR=          ${name}        @email.com
-    ${gender} =             Generate Random String        1           MF
     ${socialSecurityNumber} =  Generate Random String        9        [NUMBERS]
+    ${gender} =             Generate Random String        1           MF
     
     ${Client_dictionary} =     Create Dictionary     id=${id}
                                ... name  = ${name}       createDate = 1451602800000
@@ -19,20 +19,20 @@ Generate A Random Client
                                ... socialSecurityNumber =   ${socialSecurityNumber}
                                ... 
     ${client json}             Stringify Json               ${Client_dictionary}
-    [Return]                   ${client json} 
+    [return]                   ${client json} 
     
     
     
 
 *** Test Cases ***
 
-Test Case 1 - Request data of client with id 1
+Test Case 1 - Request data of clients with id 1
     Create Http Context         localhost:8080        http
     Get                         /hotel-rest/webresources/client/1
     ${status} =                 Get Response Status
     Should contain              ${status}             200
     
-Test Case 2 - Request data from all client
+Test Case 2 - Request data from all clients
    Create Http Context             localhost:8080             http
     Get                             /hotel-rest/webresources/client/
     ${status}=                      Get Response Status

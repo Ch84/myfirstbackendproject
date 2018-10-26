@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20181025 16:15:47.615" generator="Robot 3.0.4 (Python 2.7.12 on linux2)">
-<suite source="/home/robot/workspace/myfirstbackendproject/hellohttplibrary_V3.0.robot" id="s1" name="hellohttplibrary V3.0">
-<test id="s1-t1" name="Test Case 1 - Request data of client with id 1">
+<robot generated="20181025 21:24:42.083" generator="Robot 3.0.4 (Python 2.7.12 on linux2)">
+<suite source="/home/robot/workspace/myfirstbackendproject/hellohttplibrary_V4.0.robot" id="s1" name="hellohttplibrary V4.0">
+<test id="s1-t1" name="Test Case 1 - Request information from all clients">
 <kw name="Request information of all clients and check status code" library="clients_operations">
 <kw name="Create Http Context" library="HttpLibrary.HTTP">
 <doc>Sets the HTTP host to use for future requests. You must call this</doc>
@@ -9,24 +9,24 @@
 <arg>localhost:8080</arg>
 <arg>http</arg>
 </arguments>
-<msg timestamp="20181025 16:15:47.728" level="INFO">Host for next HTTP request set to 'localhost:8080'</msg>
-<msg timestamp="20181025 16:15:47.728" level="INFO">Scheme for next HTTP request set to 'http'</msg>
-<status status="PASS" endtime="20181025 16:15:47.729" starttime="20181025 16:15:47.728"></status>
+<msg timestamp="20181025 21:24:42.203" level="INFO">Host for next HTTP request set to 'localhost:8080'</msg>
+<msg timestamp="20181025 21:24:42.203" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<status status="PASS" endtime="20181025 21:24:42.203" starttime="20181025 21:24:42.203"></status>
 </kw>
 <kw name="GET" library="HttpLibrary.HTTP">
 <doc>Issues a HTTP GET request.</doc>
 <arguments>
 <arg>/hotel-rest/webresources/client/</arg>
 </arguments>
-<status status="PASS" endtime="20181025 16:15:47.751" starttime="20181025 16:15:47.729"></status>
+<status status="PASS" endtime="20181025 21:24:42.245" starttime="20181025 21:24:42.204"></status>
 </kw>
 <kw name="Get Response Status" library="HttpLibrary.HTTP">
 <doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
 <assign>
 <var>${status}</var>
 </assign>
-<msg timestamp="20181025 16:15:47.752" level="INFO">${status} = 200 OK</msg>
-<status status="PASS" endtime="20181025 16:15:47.752" starttime="20181025 16:15:47.751"></status>
+<msg timestamp="20181025 21:24:42.245" level="INFO">${status} = 200 OK</msg>
+<status status="PASS" endtime="20181025 21:24:42.245" starttime="20181025 21:24:42.245"></status>
 </kw>
 <kw name="Should Contain" library="BuiltIn">
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
@@ -34,38 +34,141 @@
 <arg>${status}</arg>
 <arg>200</arg>
 </arguments>
-<status status="PASS" endtime="20181025 16:15:47.753" starttime="20181025 16:15:47.752"></status>
+<status status="PASS" endtime="20181025 21:24:42.246" starttime="20181025 21:24:42.245"></status>
 </kw>
-<status status="PASS" endtime="20181025 16:15:47.753" starttime="20181025 16:15:47.728"></status>
+<status status="PASS" endtime="20181025 21:24:42.246" starttime="20181025 21:24:42.202"></status>
 </kw>
-<status status="PASS" endtime="20181025 16:15:47.753" critical="yes" starttime="20181025 16:15:47.727"></status>
+<status status="PASS" endtime="20181025 21:24:42.248" critical="yes" starttime="20181025 21:24:42.201"></status>
 </test>
-<test id="s1-t2" name="Test Case 2 - Request data from all clients">
-<kw name="Request information of all clients and check status code" library="clients_operations">
+<test id="s1-t2" name="Test Case 2 - Generate a client">
+<kw name="Generate A Random Client" library="clients_operations">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>100</arg>
+</arguments>
+<assign>
+<var>${id}</var>
+</assign>
+<msg timestamp="20181025 21:24:42.251" level="INFO">${id} = 100</msg>
+<status status="PASS" endtime="20181025 21:24:42.251" starttime="20181025 21:24:42.250"></status>
+</kw>
+<kw name="Generate Random String" library="String">
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<arguments>
+<arg>10</arg>
+</arguments>
+<assign>
+<var>${name}</var>
+</assign>
+<msg timestamp="20181025 21:24:42.251" level="INFO">${name} = e2OI5FdNzh</msg>
+<status status="PASS" endtime="20181025 21:24:42.251" starttime="20181025 21:24:42.251"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>1451602800000</arg>
+</arguments>
+<assign>
+<var>${createDate}</var>
+</assign>
+<msg timestamp="20181025 21:24:42.252" level="INFO">${createDate} = 1451602800000</msg>
+<status status="PASS" endtime="20181025 21:24:42.252" starttime="20181025 21:24:42.251"></status>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=</arg>
+<arg>${name}</arg>
+<arg>@email.com</arg>
+</arguments>
+<assign>
+<var>${email}</var>
+</assign>
+<msg timestamp="20181025 21:24:42.252" level="INFO">${email} = e2OI5FdNzh@email.com</msg>
+<status status="PASS" endtime="20181025 21:24:42.252" starttime="20181025 21:24:42.252"></status>
+</kw>
+<kw name="Generate Random String" library="String">
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<arguments>
+<arg>1</arg>
+<arg>MF</arg>
+</arguments>
+<assign>
+<var>${gender}</var>
+</assign>
+<msg timestamp="20181025 21:24:42.253" level="INFO">${gender} = M</msg>
+<status status="PASS" endtime="20181025 21:24:42.253" starttime="20181025 21:24:42.253"></status>
+</kw>
+<kw name="Generate Random String" library="String">
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<arguments>
+<arg>9</arg>
+<arg>[NUMBERS]</arg>
+</arguments>
+<assign>
+<var>${socialSecurityNumber}</var>
+</assign>
+<msg timestamp="20181025 21:24:42.259" level="INFO">${socialSecurityNumber} = 810160552</msg>
+<status status="PASS" endtime="20181025 21:24:42.259" starttime="20181025 21:24:42.254"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>id=${id}</arg>
+<arg>name=${name}</arg>
+<arg>createDate=${createDate}</arg>
+<arg>email=${email}</arg>
+<arg>gender=${gender}</arg>
+<arg>socialSecurityNumber=${socialSecurityNumber}</arg>
+</arguments>
+<assign>
+<var>${Client_dictionary}</var>
+</assign>
+<msg timestamp="20181025 21:24:42.261" level="INFO">${Client_dictionary} = {u'id': u'100', u'name': 'e2OI5FdNzh', u'createDate': u'1451602800000', u'email': u'e2OI5FdNzh@email.com', u'gender': u'M', u'socialSecurityNumber': u'810160552'}</msg>
+<status status="PASS" endtime="20181025 21:24:42.262" starttime="20181025 21:24:42.259"></status>
+</kw>
+<kw name="Stringify Json" library="HttpLibrary.HTTP">
+<doc>Converts the data structure to a string containing its JSON string representation</doc>
+<arguments>
+<arg>${Client_dictionary}</arg>
+</arguments>
+<assign>
+<var>${client json}</var>
+</assign>
+<msg timestamp="20181025 21:24:42.262" level="INFO">${client json} = {"id": "100", "name": "e2OI5FdNzh", "createDate": "1451602800000", "email": "e2OI5FdNzh@email.com", "gender": "M", "socialSecurityNumber": "810160552"}</msg>
+<status status="PASS" endtime="20181025 21:24:42.262" starttime="20181025 21:24:42.262"></status>
+</kw>
+<status status="PASS" endtime="20181025 21:24:42.263" starttime="20181025 21:24:42.250"></status>
+</kw>
+<status status="PASS" endtime="20181025 21:24:42.263" critical="yes" starttime="20181025 21:24:42.249"></status>
+</test>
+<test id="s1-t3" name="Test Case 3 - Request information of just one client">
+<kw name="Request information of a specific client and check status code" library="clients_operations">
 <kw name="Create Http Context" library="HttpLibrary.HTTP">
 <doc>Sets the HTTP host to use for future requests. You must call this</doc>
 <arguments>
 <arg>localhost:8080</arg>
 <arg>http</arg>
 </arguments>
-<msg timestamp="20181025 16:15:47.756" level="INFO">Host for next HTTP request set to 'localhost:8080'</msg>
-<msg timestamp="20181025 16:15:47.757" level="INFO">Scheme for next HTTP request set to 'http'</msg>
-<status status="PASS" endtime="20181025 16:15:47.758" starttime="20181025 16:15:47.756"></status>
+<msg timestamp="20181025 21:24:42.265" level="INFO">Host for next HTTP request set to 'localhost:8080'</msg>
+<msg timestamp="20181025 21:24:42.265" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<status status="PASS" endtime="20181025 21:24:42.266" starttime="20181025 21:24:42.264"></status>
 </kw>
 <kw name="GET" library="HttpLibrary.HTTP">
 <doc>Issues a HTTP GET request.</doc>
 <arguments>
-<arg>/hotel-rest/webresources/client/</arg>
+<arg>/hotel-rest/webresources/client/${client id}</arg>
 </arguments>
-<status status="PASS" endtime="20181025 16:15:47.781" starttime="20181025 16:15:47.758"></status>
+<status status="PASS" endtime="20181025 21:24:42.296" starttime="20181025 21:24:42.267"></status>
 </kw>
 <kw name="Get Response Status" library="HttpLibrary.HTTP">
 <doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
 <assign>
 <var>${status}</var>
 </assign>
-<msg timestamp="20181025 16:15:47.781" level="INFO">${status} = 200 OK</msg>
-<status status="PASS" endtime="20181025 16:15:47.781" starttime="20181025 16:15:47.781"></status>
+<msg timestamp="20181025 21:24:42.297" level="INFO">${status} = 200 OK</msg>
+<status status="PASS" endtime="20181025 21:24:42.297" starttime="20181025 21:24:42.296"></status>
 </kw>
 <kw name="Should Contain" library="BuiltIn">
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
@@ -73,13 +176,13 @@
 <arg>${status}</arg>
 <arg>200</arg>
 </arguments>
-<status status="PASS" endtime="20181025 16:15:47.782" starttime="20181025 16:15:47.782"></status>
+<status status="PASS" endtime="20181025 21:24:42.297" starttime="20181025 21:24:42.297"></status>
 </kw>
-<status status="PASS" endtime="20181025 16:15:47.782" starttime="20181025 16:15:47.755"></status>
+<status status="PASS" endtime="20181025 21:24:42.298" starttime="20181025 21:24:42.264"></status>
 </kw>
-<status status="PASS" endtime="20181025 16:15:47.783" critical="yes" starttime="20181025 16:15:47.754"></status>
+<status status="PASS" endtime="20181025 21:24:42.298" critical="yes" starttime="20181025 21:24:42.263"></status>
 </test>
-<test id="s1-t3" name="Test Case 3 - Create a new client">
+<test id="s1-t4" name="Test Case 4 - Create a new client">
 <kw name="Create A New Client With A Post Request" library="clients_operations">
 <kw name="Create Http Context" library="HttpLibrary.HTTP">
 <doc>Sets the HTTP host to use for future requests. You must call this</doc>
@@ -87,9 +190,9 @@
 <arg>localhost:8080</arg>
 <arg>http</arg>
 </arguments>
-<msg timestamp="20181025 16:15:47.789" level="INFO">Host for next HTTP request set to 'localhost:8080'</msg>
-<msg timestamp="20181025 16:15:47.789" level="INFO">Scheme for next HTTP request set to 'http'</msg>
-<status status="PASS" endtime="20181025 16:15:47.789" starttime="20181025 16:15:47.788"></status>
+<msg timestamp="20181025 21:24:42.300" level="INFO">Host for next HTTP request set to 'localhost:8080'</msg>
+<msg timestamp="20181025 21:24:42.300" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<status status="PASS" endtime="20181025 21:24:42.300" starttime="20181025 21:24:42.299"></status>
 </kw>
 <kw name="Generate A Random Client" library="clients_operations">
 <assign>
@@ -103,8 +206,8 @@
 <assign>
 <var>${id}</var>
 </assign>
-<msg timestamp="20181025 16:15:47.791" level="INFO">${id} = 100</msg>
-<status status="PASS" endtime="20181025 16:15:47.791" starttime="20181025 16:15:47.790"></status>
+<msg timestamp="20181025 21:24:42.301" level="INFO">${id} = 100</msg>
+<status status="PASS" endtime="20181025 21:24:42.301" starttime="20181025 21:24:42.300"></status>
 </kw>
 <kw name="Generate Random String" library="String">
 <doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
@@ -114,8 +217,8 @@
 <assign>
 <var>${name}</var>
 </assign>
-<msg timestamp="20181025 16:15:47.792" level="INFO">${name} = B0GFB66eNE</msg>
-<status status="PASS" endtime="20181025 16:15:47.792" starttime="20181025 16:15:47.791"></status>
+<msg timestamp="20181025 21:24:42.301" level="INFO">${name} = 5aZ6eQtPHq</msg>
+<status status="PASS" endtime="20181025 21:24:42.301" starttime="20181025 21:24:42.301"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -125,21 +228,21 @@
 <assign>
 <var>${createDate}</var>
 </assign>
-<msg timestamp="20181025 16:15:47.794" level="INFO">${createDate} = 1451602800000</msg>
-<status status="PASS" endtime="20181025 16:15:47.794" starttime="20181025 16:15:47.793"></status>
+<msg timestamp="20181025 21:24:42.302" level="INFO">${createDate} = 1451602800000</msg>
+<status status="PASS" endtime="20181025 21:24:42.302" starttime="20181025 21:24:42.302"></status>
 </kw>
 <kw name="Catenate" library="BuiltIn">
 <doc>Catenates the given items together and returns the resulted string.</doc>
 <arguments>
-<arg>SEPARATOR =</arg>
+<arg>SEPARATOR=</arg>
 <arg>${name}</arg>
 <arg>@email.com</arg>
 </arguments>
 <assign>
 <var>${email}</var>
 </assign>
-<msg timestamp="20181025 16:15:47.794" level="INFO">${email} = SEPARATOR = B0GFB66eNE @email.com</msg>
-<status status="PASS" endtime="20181025 16:15:47.794" starttime="20181025 16:15:47.794"></status>
+<msg timestamp="20181025 21:24:42.303" level="INFO">${email} = 5aZ6eQtPHq@email.com</msg>
+<status status="PASS" endtime="20181025 21:24:42.303" starttime="20181025 21:24:42.302"></status>
 </kw>
 <kw name="Generate Random String" library="String">
 <doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
@@ -150,8 +253,8 @@
 <assign>
 <var>${gender}</var>
 </assign>
-<msg timestamp="20181025 16:15:47.795" level="INFO">${gender} = F</msg>
-<status status="PASS" endtime="20181025 16:15:47.795" starttime="20181025 16:15:47.795"></status>
+<msg timestamp="20181025 21:24:42.303" level="INFO">${gender} = F</msg>
+<status status="PASS" endtime="20181025 21:24:42.303" starttime="20181025 21:24:42.303"></status>
 </kw>
 <kw name="Generate Random String" library="String">
 <doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
@@ -162,43 +265,94 @@
 <assign>
 <var>${socialSecurityNumber}</var>
 </assign>
-<msg timestamp="20181025 16:15:47.796" level="INFO">${socialSecurityNumber} = 099360397</msg>
-<status status="PASS" endtime="20181025 16:15:47.796" starttime="20181025 16:15:47.795"></status>
+<msg timestamp="20181025 21:24:42.304" level="INFO">${socialSecurityNumber} = 772557416</msg>
+<status status="PASS" endtime="20181025 21:24:42.304" starttime="20181025 21:24:42.304"></status>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
 <arguments>
 <arg>id=${id}</arg>
-<arg>name = ${name}</arg>
-<arg>createDate = 1451602800000</arg>
-<arg>email= ${email}</arg>
-<arg>gender = ${gender}</arg>
-<arg>socialSecurityNumber =</arg>
-<arg>${socialSecurityNumber}</arg>
+<arg>name=${name}</arg>
+<arg>createDate=${createDate}</arg>
+<arg>email=${email}</arg>
+<arg>gender=${gender}</arg>
+<arg>socialSecurityNumber=${socialSecurityNumber}</arg>
 </arguments>
 <assign>
 <var>${Client_dictionary}</var>
 </assign>
-<msg timestamp="20181025 16:15:47.797" level="FAIL">Dictionary item '${socialSecurityNumber}' does not contain '=' separator.</msg>
-<status status="FAIL" endtime="20181025 16:15:47.797" starttime="20181025 16:15:47.796"></status>
+<msg timestamp="20181025 21:24:42.309" level="INFO">${Client_dictionary} = {u'id': u'100', u'name': '5aZ6eQtPHq', u'createDate': u'1451602800000', u'email': u'5aZ6eQtPHq@email.com', u'gender': u'F', u'socialSecurityNumber': u'772557416'}</msg>
+<status status="PASS" endtime="20181025 21:24:42.309" starttime="20181025 21:24:42.304"></status>
 </kw>
-<status status="FAIL" endtime="20181025 16:15:47.797" starttime="20181025 16:15:47.789"></status>
+<kw name="Stringify Json" library="HttpLibrary.HTTP">
+<doc>Converts the data structure to a string containing its JSON string representation</doc>
+<arguments>
+<arg>${Client_dictionary}</arg>
+</arguments>
+<assign>
+<var>${client json}</var>
+</assign>
+<msg timestamp="20181025 21:24:42.309" level="INFO">${client json} = {"id": "100", "name": "5aZ6eQtPHq", "createDate": "1451602800000", "email": "5aZ6eQtPHq@email.com", "gender": "F", "socialSecurityNumber": "772557416"}</msg>
+<status status="PASS" endtime="20181025 21:24:42.309" starttime="20181025 21:24:42.309"></status>
 </kw>
-<status status="FAIL" endtime="20181025 16:15:47.797" starttime="20181025 16:15:47.785"></status>
+<msg timestamp="20181025 21:24:42.310" level="INFO">${client json} = {"id": "100", "name": "5aZ6eQtPHq", "createDate": "1451602800000", "email": "5aZ6eQtPHq@email.com", "gender": "F", "socialSecurityNumber": "772557416"}</msg>
+<status status="PASS" endtime="20181025 21:24:42.310" starttime="20181025 21:24:42.300"></status>
 </kw>
-<status status="FAIL" endtime="20181025 16:15:47.803" critical="yes" starttime="20181025 16:15:47.784">Dictionary item '${socialSecurityNumber}' does not contain '=' separator.</status>
+<kw name="Set Request Body" library="HttpLibrary.HTTP">
+<doc>Set the request body for the next HTTP request.</doc>
+<arguments>
+<arg>${client json}</arg>
+</arguments>
+<msg timestamp="20181025 21:24:42.312" level="INFO">Request body set to "{"id": "100", "name": "5aZ6eQtPHq", "createDate": "1451602800000", "email": "5aZ6eQtPHq@email.com", "gender": "F", "socialSecurityNumber": "772557416"}".</msg>
+<status status="PASS" endtime="20181025 21:24:42.312" starttime="20181025 21:24:42.310"></status>
+</kw>
+<kw name="Set Request Header" library="HttpLibrary.HTTP">
+<doc>Sets a request header for the next request.</doc>
+<arguments>
+<arg>Content-Type</arg>
+<arg>application/json</arg>
+</arguments>
+<msg timestamp="20181025 21:24:42.312" level="INFO">Set request header "Content-Type" to "application/json"</msg>
+<status status="PASS" endtime="20181025 21:24:42.312" starttime="20181025 21:24:42.312"></status>
+</kw>
+<kw name="POST" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP POST request.</doc>
+<arguments>
+<arg>${post client endpont}</arg>
+</arguments>
+<status status="PASS" endtime="20181025 21:24:42.364" starttime="20181025 21:24:42.312"></status>
+</kw>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20181025 21:24:42.364" level="INFO">${status} = 204 No Content</msg>
+<status status="PASS" endtime="20181025 21:24:42.364" starttime="20181025 21:24:42.364"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${status}</arg>
+<arg>204</arg>
+</arguments>
+<status status="PASS" endtime="20181025 21:24:42.365" starttime="20181025 21:24:42.364"></status>
+</kw>
+<status status="PASS" endtime="20181025 21:24:42.365" starttime="20181025 21:24:42.299"></status>
+</kw>
+<status status="PASS" endtime="20181025 21:24:42.365" critical="yes" starttime="20181025 21:24:42.298"></status>
 </test>
-<status status="FAIL" endtime="20181025 16:15:47.803" starttime="20181025 16:15:47.617"></status>
+<status status="PASS" endtime="20181025 21:24:42.366" starttime="20181025 21:24:42.084"></status>
 </suite>
 <statistics>
 <total>
-<stat fail="1" pass="2">Critical Tests</stat>
-<stat fail="1" pass="2">All Tests</stat>
+<stat fail="0" pass="4">Critical Tests</stat>
+<stat fail="0" pass="4">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat fail="1" id="s1" name="hellohttplibrary V3.0" pass="2">hellohttplibrary V3.0</stat>
+<stat fail="0" id="s1" name="hellohttplibrary V4.0" pass="4">hellohttplibrary V4.0</stat>
 </suite>
 </statistics>
 <errors>
